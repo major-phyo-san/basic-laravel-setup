@@ -9,20 +9,45 @@ use App\Actions\Auth\APILoginAction;
 use App\Http\Controllers\Controller;
 
 class AuthController extends Controller{
-    public function login(Request $request){
-        $token_name = 'admintoken';
-        $input = $request->collect()->except('password','token_name');
-        $credential_name = $input->keys()[0];
 
-        if(isset($request->token_name)){
+    /**
+     * log the authenticated user in to the system
+     *
+     * @param Request $request user request data
+     *
+     * @return Response json data
+     */
+    public function login(Request $request)
+    {
+        $token_name = 'admintoken';
+        $input = $request->collect()->except('password', 'token_name');
+        $credential_name = (string) $input->keys()[0];
+
+        if (isset($request->token_name)) {
             $token_name = $request->token_name;
         }
 
         $loginAction = new APILoginAction($credential_name, $request[$credential_name], $request['password'], 'App\Models\Admin');
-        $loginAction->run($token_name);
+        $token = ["token" => $loginAction->run($token_name)];
+
+        $login_response = $loginAction->run($token_name);
+        $token = ["token" => $login_response["token"]];
+        $code = $login_response["code"];
+        $success = $login_response["success"];
+        $message = $login_response["message"];
+
+        ResponseData($token, $code, $success, $message);
     }
 
-    public function logout(Request $request){
+    /**
+     * delete existing sanctum tokens and log the authenticated user out of the system
+     *
+     * @param Request $request   user request data
+     *
+     * @return Response   json message
+     */
+    public function logout(Request $request)
+    {
         $request->user()->tokens()->delete();
 
         ResponseMessage('Admin logged out');
