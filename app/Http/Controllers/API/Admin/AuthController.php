@@ -28,7 +28,6 @@ class AuthController extends Controller{
         }
 
         $loginAction = new APILoginAction($credential_name, $request[$credential_name], $request['password'], 'App\Models\Admin');
-        $token = ["token" => $loginAction->run($token_name)];
 
         $login_response = $loginAction->run($token_name);
         $token = ["token" => $login_response["token"]];
