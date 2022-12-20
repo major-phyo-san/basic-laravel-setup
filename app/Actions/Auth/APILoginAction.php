@@ -44,18 +44,21 @@ class APILoginAction {
             "message" => null
         ];
 
-        if(!isset($user)){
+        if(!isset($user))
+        {
             $login_response["message"] = "Credential error, user not found";
 
             return $login_response;
         }
 
-        if(!Hash::check($this->password, $user->getAuthPassword())){
+        if(!Hash::check($this->password, $user->getAuthPassword()))
+        {
             $login_response["message"] = "Credential error, password not match";
 
             return $login_response;
         }
 
+        $login_response["user"] = $user;
         $login_response["token"] = $user->createToken($token_name)->plainTextToken;
         $login_response["code"] = 200;
         $login_response["success"] = true;
