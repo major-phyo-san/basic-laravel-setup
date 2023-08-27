@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .sidebar-app-title{
+        @apply text-xl text-black text-center mb-4
+    }
+    .modal-header{
+        @apply flex flex-shrink-0 items-center justify-between rounded-t-md  py-4 px-8
+    }
+    .modal-cancel-btn{
+        @apply box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none
+    }
+    .modal-title{
+        @apply text-xl font-medium leading-normal text-neutral-800
+    }
+    .modal-footer{
+        @apply flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md  border-neutral-100 border-opacity-100 py-4 px-8 dark:border-opacity-50
+    }
+    .primary-input{
+        @apply text-sm border focus:outline-none focus:shadow-none focus:ring-0
+    }
+    .primary-textarea{
+        @apply text-sm border focus:outline-none focus:shadow-none focus:ring-0
+    }
+
+
+    /* .nav-bar{
+        @apply w-2/3 ml-auto
+    } */
+    .section-mb{
+        @apply mb-16
+    }
+    .discount-container{
+        @apply absolute top-3 left-0 bg-pink-600 text-white px-4 py-2
+    }
+    .product-title{
+        @apply text-sm text-black
+    }
+    .product-price{
+        @apply text-pink-600 text-sm inline-block
+    }
+    .normal-price{
+        @apply line-through text-black text-sm inline-block
+    }
+    .web-sidebar{
+        @apply w-1/5
+    }
+    .web-sidebar-title{
+        @apply text-lg text-black font-semibold bg-gray-200 px-3 py-2
+    }
+}
