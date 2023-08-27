@@ -1,10 +1,13 @@
-##Devlopment Envrionment
+##Devlopment Environment
 
-- Laravel Framework 9.x
+- Laravel Framework 10.10
 - PHP 8.1
-- Composer 2.2
-- Node 18.10
-- Npm 8.19
+- Composer 2.5
+- Vue 3.2
+- Tailwind 3.3
+- Node 18.16
+- Npm 9.51
+- Vite 4
 
 ##Deployment Environment
 
@@ -16,7 +19,7 @@
 ##Naming Conventions 
 
 - `Variables` should typically be in snake case because all table columns are snake_case. (i.e. user_posts).
-- `Methods`  methods should be camelCase but the first character lower case and should start with verb . (i.e. getAllUsers)
+- `Methods` should be camelCase but the first character lower case and should start with verb . (i.e. getAllUsers)
 - `Blade files` should be in lower case, snake_case (underscore between words). (i.e. all.blade.php, all_posts.blade.php)
 - `Controllers` should be in singular case, no spacing between words, and end with "Controller".
    Also, each word should be capitalised. (i.e. BlogController)
